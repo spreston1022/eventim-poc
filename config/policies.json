@@ -1,3 +1,12 @@
 {
-  "policies": []
+  "policies": [
+    {
+      "name": "keycloak-multi-realm-jwt-inbound",
+      "policyType": "custom-code-inbound",
+      "handler": {
+        "export": "default",
+        "module": "$import(./modules/keycloak-multi-realm-jwt)"
+      }
+    }
+  ]
 }

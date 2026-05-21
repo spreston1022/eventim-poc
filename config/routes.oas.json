@@ -2,7 +2,36 @@
   "openapi": "3.1.0",
   "info": {
     "version": "1.0.0",
-    "title": "My Zuplo API"
+    "title": "Eventim POC API"
   },
-  "paths": {}
+  "paths": {
+    "/v1/hello": {
+      "x-zuplo-path": {
+        "pathMode": "open-api"
+      },
+      "get": {
+        "summary": "Hello World (JWT protected)",
+        "description": "Protected by the Keycloak multi-realm JWT policy. Pass a Bearer token issued by any trusted Keycloak realm.",
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "export": "default",
+            "module": "$import(./modules/hello-world)",
+            "options": {}
+          },
+          "policies": {
+            "inbound": ["keycloak-multi-realm-jwt-inbound"]
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  }
 }
