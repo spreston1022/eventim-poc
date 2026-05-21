@@ -10,6 +10,7 @@
         "pathMode": "open-api"
       },
       "get": {
+        "operationId": "get-v1-hello",
         "summary": "Hello World (JWT protected)",
         "description": "Protected by the Keycloak multi-realm JWT policy. Pass a Bearer token issued by any trusted Keycloak realm.",
         "x-zuplo-route": {
